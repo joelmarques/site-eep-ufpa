@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html ng-app="site">
+	<head>
+	  <title>Escola Experimental de Primatas (EEP - UFPA)</title>
+	  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link href="img/shortcut.ico" rel="shortcut icon"/>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css"/>
+	  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css"/>
+		<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+		<link href="css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+ 		<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="css/material-kit.css" rel="stylesheet" type="text/css"/>
+    <link href="css/jquery.bxslider.css" rel="stylesheet" type="text/css"/>
+   </head>
+
+	<body class="landing-page" ng-controller="SiteCtrl as vm" onload="setCarouselPesquisadores()">
+
+    <nav class="navbar navbar-transparent navbar-absolute">
+    	<div class="container">
+        	<!-- Brand and toggle get grouped for better mobile display -->
+        	<div class="navbar-header">
+        		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example">
+            		<span class="sr-only">Toggle navigation</span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+        		</button>
+        		<a class="navbar-brand" href="#">
+
+		        	<div class="logo-container">
+		                <div class="logo">
+		                    <img src="img/logo-DP.svg" height="50" alt="Logo EEP" rel="tooltip" >Escola Experimental de Primatas (EEP - UFPA)
+		                </div>
+					</div>
+
+        		</a>
+        	</div>
+
+        	<div class="collapse navbar-collapse" id="navigation-example">
+        		<ul class="nav navbar-nav navbar-right">
+    				<li>
+    					<a href="#sobre" class="btn" >
+    						Sobre
+    					</a>
+    				</li>
+    				<li>
+    					<a href="#orientadores" class="btn">
+    						Orientadores
+    					</a>
+    				</li>
+    				<li>
+    					<a href="#pesquisadores" class="btn">
+    						Pesquisadores
+    					</a>
+    				</li>
+    				<li>
+    					<a href="#primatas" class="btn">
+    						Primatas
+    					</a>
+    				</li>
+    				<li>
+    					<a href="#contato" class="btn">
+    						Contato
+    					</a>
+    				</li>
+		            <li>
+    					<a href="{{vm.sistema}}" class="btn">
+    						Entrar
+    					</a>
+		            </li>
+        		</ul>
+        	</div>
+    	</div>
+    </nav>
+
+    <div class="wrapper">
+        <div class="header header-filter" style="background-image: url('img/back-macaco.png');">
+            <div class="container">
+                <div class="row">
+					<div class="col-md-6">
+						<h1 class="title">Comportamento simbólico</h1>
+	                    <h4 class="text-justify">A complexa capacidade de simbolizar dos seres humanos é responsável por toda a construção de nossos saberes e práticas e como elas são repassadas de geração em geração.</h4>
+	                    <br />
+	                    <a href="#sobre" class="btn btn-danger btn-raised btn-lg">
+							Conheça mais
+						</a>
+					</div>
+                </div>
+            </div>
+        </div>
+
+		<div class="main main-raised">
+			<div class="container">
+		    	<div id="sobre" class="section text-center section-landing">
+	                <div class="row">
+	                    <div class="col-md-8 col-md-offset-2">
+	                        <h2 class="title">Sobre o projeto</h2>
+	                        <h5 class="description text-justify">{{vm.site.empresa.resumo}}</h5>
+	                    </div>
+	                </div>
+
+					<div class="features">
+						<div class="row">
+		                    <div class="col-md-4">
+								<div class="feature feature-primary">
+									<i class="material-icons">chat</i>
+									<h4 class="title">Objetivo 1</h4>
+			                        <p class="description">{{vm.site.empresa.objetivoUm}}</p>
+								</div>
+
+		                    </div>
+		                    <div class="col-md-4">
+								<div class="feature feature-success">
+									<i class="material-icons">verified_user</i>
+									<h4 class="title">Objetivo 2</h4>
+			                        <p class="description">{{vm.site.empresa.objetivoDois}}</p>
+								</div>
+
+		                    </div>
+		                    <div class="col-md-4">
+								<div class="feature feature-danger">
+									<i class="material-icons">fingerprint</i>
+									<h4 class="title">Objetivo 3</h4>
+			                        <p class="description">{{vm.site.empresa.objetivoTres}}</p>
+								</div>
+
+		                    </div>
+		                </div>
+					</div>
+	            </div>
+
+	        	<div id="orientadores" class="section text-center">
+	                <h2 class="title">Orientadores</h2>
+					<div class="row">
+						<div class="col-md-4" ng-repeat="pessoa in vm.site.orientadores">
+	                        <img ng-src="{{pessoa.urlFoto}}" alt="Thumbnail Image" class="img-raised img-circle" style="width: 170px; height: 170px;">
+	                        <h4 class="title">{{pessoa.nome}} <br />
+								<small class="text-muted"> </small>
+							</h4>
+	                        <p class="description">{{pessoa.resumo}}</p>
+							<a href="{{pessoa.curriculoLattes}}" target="_blank"><i class="fa fa-graduation-cap"></i> Currículo Lattes</a>
+		                </div>
+					</div>
+	            </div>
+
+	            <div id="pesquisadores" class="section text-center">
+	            	<h2 class="title">Pesquisadores</h2>
+		            <div class="row">
+			            <div id="carouselPesquisadores">
+			            	<div ng-repeat="pessoa in vm.site.pesquisadores">
+		                        <img ng-src="{{pessoa.urlFoto}}" alt="Thumbnail Image" class="img-raised img-circle" style="width: 170px; height: 170px;">
+		                        <h4 class="title">{{pessoa.nome}} <br />
+									<small class="text-muted"> </small>
+								</h4>
+		                        <p class="description">{{pessoa.resumo}}</p>
+								<a href="{{pessoa.curriculoLattes}}" target="_blank"><i class="fa fa-graduation-cap"></i> Currículo Lattes</a>
+			               </div>
+						</div>
+					</div>
+				</div>
+
+				<div id="primatas" class="section text-center">
+	                <h2 class="title">Sujeitos de Pesquisa</h2>
+	                <div class="row">
+	                	<div class="col-md-8 col-md-offset-2">
+				          <uib-carousel interval="3000" active="0" no-wrap="false">
+				            <uib-slide ng-repeat="animal in vm.site.animais" index="$index">
+				              <img ng-src="{{animal.urlFoto}}" style="margin:auto; height: 400px; width: 100%;"/>
+				              <div class="carousel-caption">
+				                <h4>{{animal.nome}}</h4>
+				              </div>
+				            </uib-slide>
+				          </uib-carousel>
+				        </div>
+	                </div>
+	            </div>
+
+				<div id="contato" class="section landing-section">
+	                <div class="row">
+	                    <div class="col-md-8 col-md-offset-2">
+	                        <h2 class="text-center title">Contato</h2>
+							<h4 class="text-center description">Entre em contato conosco</h4>
+	                        <form class="contact-form" name="formularioEntreEmContato">
+	                            <div class="row">
+	                                <div class="col-md-6">
+										<div class="form-group label-floating">
+											<label class="control-label">Seu nome</label>
+											<input type="text" class="form-control" ng-model="vm.visitante.nome" ng-required="true">
+										</div>
+	                                </div>
+	                                <div class="col-md-6">
+										<div class="form-group label-floating">
+											<label class="control-label">Seu e-mail</label>
+											<input type="email" class="form-control" ng-model="vm.visitante.email" ng-required="true">
+										</div>
+	                                </div>
+	                            </div>
+
+								<div class="form-group label-floating">
+									<label class="control-label">Sua mensagem</label>
+									<textarea class="form-control" rows="4" ng-model="vm.visitante.mensagem" ng-required="true"></textarea>
+								</div>
+
+	                            <div class="row">
+	                                <div class="col-md-4 col-md-offset-4 text-center">
+	                                    <button class="btn btn-primary btn-raised" ng-click="vm.enviarMensagem()">
+											Enviar mensagem
+										</button>
+	                                </div>
+	                            </div>
+	                        </form>
+	                    </div>
+	                </div>
+	            </div>
+
+	            <div id="mapa" class="section text-center section-landing">
+	            	<h2 class="title">Como chegar</h2>
+	            	<div class="row">
+	            		<div class="col-md-8 col-md-offset-2">
+	            			<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13415.656257243396!2d-48.457541056893454!3d-1.4737901630607249!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xbbda4efcd7cbbef8!2sEscola+Experimental+de+Primatas!5e0!3m2!1spt-BR!2sbr!4v1465355250273" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen></iframe>
+	            		</div>
+	            	</div>
+	            </div>
+
+	        </div>
+
+		</div>
+
+	    <footer class="footer">
+	        <div class="container">
+	        	<div class="copyright pull-right">
+	                &copy; 2016, Desenvolvido por um grupo voluntário de empreendedores.
+	                <br />
+	                <a href="https://br.linkedin.com/in/bitmarques" target="_blank">Joel Marques</a> |
+	                <a href="https://br.linkedin.com/in/manoelneto650" target="_blank">Manoel Neto</a> |
+	                <a href="https://br.linkedin.com/in/weslleytavares" target="_blank">Weslley Tavares</a>
+	            </div>
+	        </div>
+	    </footer>
+
+	</div>
+
+		<script src="js/angular.min.js"></script>
+    <script src="js/angular-resource.min.js"></script>
+		<script src="js/jquery-1.12.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/ui-bootstrap-tpls-1.2.5.min.js"></script>
+		<script src="js/material.min.js"></script>
+		<script src="js/nouislider.min.js"></script>
+		<script src="js/material-kit.js"></script>
+		<script src="js/jquery.bxslider.min.js"></script>
+		<script src="js/site.js"></script>
+
+		<script type="text/javascript">
+
+			$().ready(function(){
+				// the body of this function is in assets/material-kit.js
+				materialKit.initSliders();
+				$(window).on('scroll', materialKit.checkScrollForTransparentNavbar);
+
+	            window_width = $(window).width();
+
+	            if (window_width >= 768){
+	                big_image = $('.wrapper > .header');
+
+					$(window).on('scroll', materialKitDemo.checkScrollForParallax);
+				}
+
+			});
+		</script>
+
+		<script type="text/javascript" defer="defer">
+
+			function setCarouselPesquisadores() {
+
+				$('#carouselPesquisadores').bxSlider({
+					slideWidth: 300,
+					minSlides: 2,
+				    maxSlides: 3,
+				    slideMargin: 40
+				});
+			}
+		</script>
+
+	</body>
+
+</html>
