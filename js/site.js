@@ -2,11 +2,7 @@
 
 angular.module('site', ['ui.bootstrap'])
 
-
-
 .controller('SiteCtrl', function ($http, variaveisGlobais) {
-
-	$http.defaults.useXDomain = true;
 
 	var vm = this;
 
@@ -59,5 +55,5 @@ angular.module('site', ['ui.bootstrap'])
 .constant('variaveisGlobais', {
 	identificador: 'EEP_UFPA',
 	descricaoDoSite: 'Escola Experimental de Primatas - UFPA',
-	ambiente: 'http://macaco-bitmarques.rhcloud.com/'
+	ambiente: 'https://macaco-bitmarques.rhcloud.com/'
 });
