@@ -2,7 +2,11 @@
 
 angular.module('site', ['ui.bootstrap'])
 
+
+
 .controller('SiteCtrl', function ($http, variaveisGlobais) {
+
+	$http.defaults.useXDomain = true;
 
 	var vm = this;
 
