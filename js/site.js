@@ -55,5 +55,5 @@ angular.module('site', ['ui.bootstrap'])
 .constant('variaveisGlobais', {
 	identificador: 'EEP_UFPA',
 	descricaoDoSite: 'Escola Experimental de Primatas - UFPA',
-	ambiente: 'https://macaco-bitmarques.rhcloud.com/'
+	ambiente: 'http://diarioprimatas-bitmarques.rhcloud.com/'
 });
