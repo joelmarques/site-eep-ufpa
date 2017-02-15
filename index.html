@@ -11,10 +11,9 @@
 		<link href="css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
  		<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
     <link href="css/material-kit.css" rel="stylesheet" type="text/css"/>
-    <link href="css/jquery.bxslider.css" rel="stylesheet" type="text/css"/>
    </head>
 
-	<body class="landing-page" ng-controller="SiteCtrl as vm" onload="setCarouselPesquisadores()">
+	<body class="landing-page" ng-controller="SiteCtrl as vm">
 
     <nav class="navbar navbar-transparent navbar-absolute">
     	<div class="container">
@@ -55,7 +54,7 @@
     					</a>
     				</li>
     				<li>
-    					<a href="#primatas" class="btn">
+    					<a href="#animais" class="btn">
     						Sujeitos de Pesquisa
     					</a>
     				</li>
@@ -130,63 +129,90 @@
 					</div>
 	            </div>
 
-	        	<div id="orientadores" class="section text-center">
-	                <h2 class="title">Orientadores</h2>
+    	<div id="orientadores" class="section text-center">
+          <h2 class="title">Orientadores</h2>
 					<div class="row">
 						<div class="col-md-4" ng-repeat="pessoa in vm.site.orientadores">
-	                        <img ng-src="{{pessoa.urlFoto}}" alt="Thumbnail Image" class="img-raised img-circle" style="width: 170px; height: 170px;">
-	                        <h4 class="title">{{pessoa.nome}} <br />
+                <img ng-src="{{pessoa.urlFoto}}" alt="Thumbnail Image" class="img-raised img-circle" style="width: 170px; height: 170px;">
+                <h4 class="title">{{pessoa.nome}} <br />
 								<small class="text-muted"> </small>
 							</h4>
-	                        <p class="description">{{pessoa.resumo}}</p>
+              <p class="description">{{pessoa.resumo}}</p>
 							<a href="{{pessoa.curriculoLattes}}" target="_blank"><i class="fa fa-graduation-cap"></i> Currículo Lattes</a>
-		                </div>
+            </div>
 					</div>
-	            </div>
+        </div>
 
-	            <div id="pesquisadores" class="section text-center">
-	            	<h2 class="title">Pesquisadores</h2>
-		            <div class="row">
-			            <div id="carouselPesquisadores">
-			            	<div ng-repeat="pessoa in vm.site.pesquisadores">
-		                        <img ng-src="{{pessoa.urlFoto}}" alt="Thumbnail Image" class="img-raised img-circle" style="width: 170px; height: 170px;">
-		                        <h4 class="title">{{pessoa.nome}} <br />
-									<small class="text-muted"> </small>
-								</h4>
-		                        <p class="description">{{pessoa.resumo}}</p>
+				<div id="pesquisadores" class="section text-center">
+					<h2 class="title">Pesquisadores</h2>
 
-									<div class="text-center center-block">
-										<div>
-											<a href="{{pessoa.curriculoLattes}}" target="_blank"><i class="fa fa-graduation-cap"></i> Currículo Lattes</a>
-										</div>
-										<div>
-											<a href="{{pessoa.facebook}}" target="_blank"><i class="fa fa-facebook-official"></i> Facebook</a>
-										</div>
-										<div>
-											<a href=""><i class="fa fa-envelope"></i> {{pessoa.email}}</a>
-										</div>
-									</div>
+					<nav aria-label="...">
+					  <ul class="pager">
+					    <li><a href="" ng-click="vm.pPrev()">Anterior</a></li>
+					    <li><a href="" ng-click="vm.pNext()">Próximo</a></li>
+					  </ul>
+					</nav>
 
+					<div class="row">
+						<div class="col-md-4" ng-repeat="pessoa in vm.pesquisadores">
+                <img ng-src="{{pessoa.urlFoto}}" alt="Thumbnail Image" class="img-raised img-circle" style="width: 170px; height: 170px;">
+                <h4 class="title">{{pessoa.nome}} <br />
+								<small class="text-muted"> </small>
+							</h4>
+	            <p class="description">{{pessoa.resumo}}</p>
+							<div class="text-center center-block">
+								<div>
+									<a href="{{pessoa.curriculoLattes}}" target="_blank"><i class="fa fa-graduation-cap"></i> Currículo Lattes</a>
+								</div>
+								<div>
+									<a href="{{pessoa.facebook}}" target="_blank"><i class="fa fa-facebook-official"></i> Facebook</a>
+								</div>
+								<div>
+									<a href=""><i class="fa fa-envelope"></i> {{pessoa.email}}</a>
+								</div>
 							</div>
-						</div>
+		        </div>
 					</div>
-				</div>
 
-				<div id="primatas" class="section text-center">
-	                <h2 class="title">Sujeitos de Pesquisa</h2>
-	                <div class="row">
-	                	<div class="col-md-8 col-md-offset-2">
-				          <uib-carousel interval="3000" active="0" no-wrap="false">
-				            <uib-slide ng-repeat="animal in vm.site.animais" index="$index">
-				              <img ng-src="{{animal.urlFoto}}" style="margin:auto; height: 400px; width: 100%;"/>
-				              <div class="carousel-caption">
-				                <h4>{{animal.nome}}</h4>
-				              </div>
-				            </uib-slide>
-				          </uib-carousel>
-				        </div>
-	                </div>
-	            </div>
+					<nav aria-label="...">
+					  <ul class="pager">
+					    <li><a href="" ng-click="vm.pPrev()">Anterior</a></li>
+					    <li><a href="" ng-click="vm.pNext()">Próximo</a></li>
+					  </ul>
+					</nav>
+
+        </div>
+
+				<div id="animais" class="section text-center">
+					<h2 class="title">Sujeitos de Pesquisa</h2>
+
+					<nav aria-label="...">
+					  <ul class="pager">
+					    <li><a href="" ng-click="vm.aPrev()">Anterior</a></li>
+					    <li><a href="" ng-click="vm.aNext()">Próximo</a></li>
+					  </ul>
+					</nav>
+
+					<div class="row">
+						<div class="col-md-4" ng-repeat="animal in vm.animais">
+                <a href="{{animal.urlFoto}}" target="_blank"><img ng-src="{{animal.urlFoto}}" alt="Thumbnail Image" class="img-raised img-circle" style="width: 170px; height: 170px;"></a>
+                <h4 class="title">{{animal.nome}} <br />
+								<small class="text-muted"> </small>
+							</h4>
+	            <p class="description">{{animal.sexo}}</p>
+							<a href="" title="Em desenvolvimento"><i class="fa fa-book"></i> Histórico Escolar</a>
+							<a href="" title="Em desenvolvimento"><i class="fa fa-heartbeat"></i> Histórico Clínico</a>
+		        </div>
+					</div>
+
+					<nav aria-label="...">
+					  <ul class="pager">
+					    <li><a href="" ng-click="vm.aPrev()">Anterior</a></li>
+					    <li><a href="" ng-click="vm.aNext()">Próximo</a></li>
+					  </ul>
+					</nav>
+
+        </div>
 
 				<div id="contato" class="section landing-section">
 	                <div class="row">
@@ -259,40 +285,19 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/ui-bootstrap-tpls-1.2.5.min.js"></script>
 		<script src="js/material.min.js"></script>
-		<script src="js/nouislider.min.js"></script>
 		<script src="js/material-kit.js"></script>
-		<script src="js/jquery.bxslider.min.js"></script>
 		<script src="js/site.js"></script>
 
 		<script type="text/javascript">
-
 			$().ready(function(){
-				// the body of this function is in assets/material-kit.js
-				materialKit.initSliders();
 				$(window).on('scroll', materialKit.checkScrollForTransparentNavbar);
-
-	            window_width = $(window).width();
-
-	            if (window_width >= 768){
-	                big_image = $('.wrapper > .header');
-
+				window_width = $(window).width();
+				if (window_width >= 768){
+					big_image = $('.wrapper > .header');
 					$(window).on('scroll', materialKitDemo.checkScrollForParallax);
 				}
 
 			});
-		</script>
-
-		<script type="text/javascript" defer="defer">
-
-			function setCarouselPesquisadores() {
-
-				$('#carouselPesquisadores').bxSlider({
-					slideWidth: 300,
-					minSlides: 2,
-				    maxSlides: 3,
-				    slideMargin: 40
-				});
-			}
 		</script>
 
 	</body>
