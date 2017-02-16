@@ -160,17 +160,11 @@
 								<small class="text-muted"> </small>
 							</h4>
 	            <p class="description">{{pessoa.resumo}}</p>
-							<div class="text-center center-block">
-								<div>
-									<a href="{{pessoa.curriculoLattes}}" target="_blank"><i class="fa fa-graduation-cap"></i> Currículo Lattes</a>
-								</div>
-								<div>
-									<a href="{{pessoa.facebook}}" target="_blank"><i class="fa fa-facebook-official"></i> Facebook</a>
-								</div>
-								<div>
-									<a href=""><i class="fa fa-envelope"></i> {{pessoa.email}}</a>
-								</div>
-							</div>
+							<ul class="list-inline">
+								<li><a href="{{pessoa.curriculoLattes}}" target="_blank" title="{{pessoa.curriculoLattes}}"><i class="fa fa-graduation-cap"></i></a></li>
+								<li><a href="{{pessoa.facebook}}" target="_blank" title="{{pessoa.facebook}}"><i class="fa fa-facebook-official"></i></a></li>
+								<li><a href="" title="{{pessoa.email}}"><i class="fa fa-envelope"></i></a></li>
+						  </ul>
 		        </div>
 					</div>
 
@@ -200,8 +194,10 @@
 								<small class="text-muted"> </small>
 							</h4>
 	            <p class="description">{{animal.sexo}}</p>
-							<a href="" title="Em desenvolvimento"><i class="fa fa-book"></i> Histórico Escolar</a>
-							<a href="" title="Em desenvolvimento"><i class="fa fa-heartbeat"></i> Histórico Clínico</a>
+							<ul class="list-inline">
+								<li><a href="" title="Em desenvolvimento"><i class="fa fa-book"></i> Histórico Escolar</a></li>
+								<li><a href="" title="Em desenvolvimento"><i class="fa fa-heartbeat"></i> Histórico Clínico</a></li>
+							</ul>
 		        </div>
 					</div>
 
