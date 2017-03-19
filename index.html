@@ -190,11 +190,14 @@
 					<div class="row">
 						<div class="col-md-4" ng-repeat="animal in vm.animais">
                 <a href="{{animal.urlFoto}}" target="_blank"><img ng-src="{{animal.urlFoto}}" alt="Thumbnail Image" class="img-raised img-circle" style="width: 170px; height: 170px;"></a>
-                <h4 class="title">{{animal.nome}} <br />
-								<small class="text-muted"> </small>
+                <h4 class="title">{{animal.nome}}
+								<small class="text-muted">
+									<img ng-show="animal.aniversariante" src="img/feliz_aniversario.gif" style="width: 30px; height: 30px;"/>
+								</small>
 							</h4>
 	            <p class="description">é meu nome, sou {{animal.sexo}} e data de nascimento {{animal.dataDeNascimento}}, portanto idade {{animal.idade}}.
-								Minha proveniência é {{animal.proveniencia}}. Para me conhecer mais veja meus históricos.</p>
+								Minha proveniência é {{animal.proveniencia}}. Para me conhecer mais veja meus históricos.
+							</p>
 							<ul class="list-inline">
 								<li><a href="" title="Em desenvolvimento"><i class="fa fa-book"></i> Histórico Escolar</a></li>
 								<li><a href="" title="Em desenvolvimento"><i class="fa fa-heartbeat"></i> Histórico Clínico</a></li>
