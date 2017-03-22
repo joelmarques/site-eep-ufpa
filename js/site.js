@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('site', ['ui.bootstrap'])
+angular.module('site', [])
 
 .controller('SiteCtrl', function ($http, variaveisGlobais) {
 
@@ -80,18 +80,18 @@ angular.module('site', ['ui.bootstrap'])
 			vm.pesquisadores.push(vm.site.pesquisadores[i-1]);
 		}
 	}
-	
+
 	vm.pPrev = function() {
 		if (vm.pInicio > 1) {
 			vm.pInicio = vm.pInicio - vm.pQuantidadePorSlide;
-			vm.setPesquisadores()
+			vm.setPesquisadores();
 		}
 	}
 
 	vm.pNext = function() {
 		if (vm.pFim + 1 <= vm.site.pesquisadores.length) {
 			vm.pInicio = vm.pFim + 1;
-			vm.setPesquisadores()
+			vm.setPesquisadores();
 		}
 	}
 
@@ -114,14 +114,14 @@ angular.module('site', ['ui.bootstrap'])
 	vm.aPrev = function() {
 		if (vm.aInicio > 1) {
 			vm.aInicio = vm.aInicio - vm.aQuantidadePorSlide;
-			vm.setAnimais()
+			vm.setAnimais();
 		}
 	}
 
 	vm.aNext = function() {
 		if (vm.aFim + 1 <= vm.site.animais.length) {
 			vm.aInicio = vm.aFim + 1;
-			vm.setAnimais()
+			vm.setAnimais();
 		}
 	}
 
