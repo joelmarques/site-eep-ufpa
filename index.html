@@ -189,11 +189,15 @@
 
 					<div class="row">
 						<div class="col-md-4" ng-repeat="animal in vm.animais">
-                <img ng-src="{{animal.urlFoto}}" class="img-raised img-circle" style="width: 150px; height: 150px;"/>
-                <h4 class="title">{{animal.nome}}
-								<small class="text-muted">
-									<img ng-show="animal.aniversariante" src="img/feliz_aniversario.gif" style="width: 30px; height: 30px;"/>
-								</small>
+              <img ng-src="{{animal.urlFoto}}" class="img-raised img-circle" style="width: 150px; height: 150px;"/>
+							<h4 class="title">
+									<small class="text-muted">
+										<img ng-show="animal.aniversariante" src="img/niver_macaquinho.gif" style="width: 40px; height: 40px;"/>
+									</small>
+									{{animal.nome}}
+									<small class="text-muted">
+										<img ng-show="animal.aniversariante" src="img/niver_bolinho.gif" style="width: 40px; height: 40px;"/>
+									</small>
 							</h4>
 	            <p class="description">é meu nome, sou {{animal.sexo}} e data de nascimento {{animal.dataDeNascimento}}, portanto idade {{animal.idade}}.
 								Minha proveniência é {{animal.proveniencia}}.
