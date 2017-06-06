@@ -6,6 +6,8 @@ angular.module('site', [])
 
 	var vm = this;
 
+	vm.historicoEscolar = {};
+
 	vm.sistema = variaveisGlobais.ambiente + 'app.html';
 
 	vm.visitante = {};
@@ -40,18 +42,18 @@ angular.module('site', [])
 				method: 'POST',
 				url: variaveisGlobais.ambiente + 'publico/sites',
 				data: vm.visitante
-			}
+			};
 
 			$http(req).then(
 					   function(){
 						   vm.visitante.nome = null;
 						   vm.visitante.email = null;
 						   vm.visitante.mensagem = null;
-						   alert('Mensagem enviada com sucesso!')
+						   alert('Mensagem enviada com sucesso!');
 					   },
 
 					   function(){
-						   alert('Erro ao enviar a mensagem!')
+						   alert('Erro ao enviar a mensagem!');
 					   });
 
 		}
@@ -123,6 +125,14 @@ angular.module('site', [])
 			vm.aInicio = vm.aFim + 1;
 			vm.setAnimais();
 		}
+	}
+
+	vm.buscarHistoricoEscolar = function(idAnimal) {
+		$http.get(variaveisGlobais.ambiente + 'publico/sites/historicos?idAnimal=' + idAnimal).success(function(historicoEscolar) {
+			vm.historicoEscolar = historicoEscolar;
+			vm.carouselImagens = addImages(vm.historicoEscolar.imagens, "images");
+			vm.carouselVideos = addVideos(vm.historicoEscolar.videos, "videos");
+		});
 	}
 
 })
