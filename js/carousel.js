@@ -84,7 +84,7 @@ function addImages(content, containerID) {
 		main.empty();
     for (var i=0; i<content.length; i++) {
       var carousel = $("<img class='carousel' style='width: 552px; height: 315px;'/>");
-			carousel.attr('src', content[i]);
+			carousel.attr('src', replaceURLImage(content[i]));
       main.append(carousel);
     }
 		return new Carousel(containerID);
@@ -99,4 +99,12 @@ function addVideos(content, containerID) {
 			main.append(carousel);
 		}
 		return new Carousel(containerID);
+}
+
+function replaceURLImage(url) {
+	if (url.indexOf("https://drive.google.com/file/d/") != -1) {	
+		var codigo = url.replace("https://drive.google.com/file/d/","").replace("/view?usp=sharing","");		
+		return "https://drive.google.com/uc?export=view&id=" + codigo;
+	}	
+	return url;
 }
