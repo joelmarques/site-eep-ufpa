@@ -203,16 +203,14 @@
 							<div class="description">
 		            <p>é meu nome, sou {{animal.sexo}} e data de nascimento {{animal.dataDeNascimento}}, portanto idade {{animal.idade}}.
 									Minha proveniência é
-									<!--Para me conhecer mais veja meus históricos.-->
 								</p>
 								<p style="margin: 0 0 10px; margin-top: -10px">
 									{{animal.proveniencia}}
 								</p>
 							</div>
 
-							<ul class="list-inline" ng-show="false">
-								<li><a href="" title="Em desenvolvimento"><i class="fa fa-book"></i> Histórico Escolar</a></li>
-								<li><a href="" title="Em desenvolvimento"><i class="fa fa-heartbeat"></i> Histórico Clínico</a></li>
+							<ul class="list-inline">
+								<li><a href="" ng-click="vm.buscarHistoricoEscolar(animal.id)" data-toggle="modal" data-target="#modalHistoricoEscolar"><i class="fa fa-book"></i> Histórico Escolar</a></li>
 							</ul>
 		        </div>
 					</div>
@@ -291,12 +289,131 @@
 
 	</div>
 
+	<!-- Sart Modal -->
+	<div class="modal fade" id="modalHistoricoEscolar" tabindex="-1" role="dialog" aria-labelledby="modalHistoricoEscolarLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+				<!-- Sart modal-header -->
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+	          <i class="material-icons">clear</i>
+	        </button>
+	        <div class="text-center">
+	          <h3>Escola Experimental de Primatas <br /> UFPA <br /><small>Histórico Escolar</small></h3>
+	        </div>
+	      </div>
+				<!-- End modal-header -->
+				<!-- Sart modal-body -->
+	      <div class="modal-body">
+
+	        <div class="media">
+	          <div class="media-left">
+	              <img ng-src="{{vm.historicoEscolar.urlFoto}}" alt="..." class="img-circle" style="width: 150px; height: 150px;">
+	          </div>
+	          <div class="media-body media-middle">
+	            <h4 class="media-heading title">{{vm.historicoEscolar.nome}}</h4>
+	            {{vm.historicoEscolar.idade}}
+	          </div>
+	        </div>
+
+	        <div class="page-header">
+	          <h4><small>Identificação</small></h4>
+	       </div>
+
+	        <table class="table">
+	          <tr>
+	              <td class="text-left" style="border: 0;"><b>Nome:</b> {{vm.historicoEscolar.nome}}</td>
+	              <td class="text-left" style="border: 0;"><b>Código:</b> {{vm.historicoEscolar.codigo}}</td>
+	          </tr>
+	          <tr>
+	              <td class="text-left" style="border: 0;"><b>Sexo:</b> {{vm.historicoEscolar.sexo}}</td>
+	              <td class="text-left" style="border: 0;"><b>Espécie:</b> {{vm.historicoEscolar.especie}}</td>
+	          </tr>
+	          <tr>
+	              <td class="text-left" style="border: 0;"><b>Nascimento:</b> {{vm.historicoEscolar.nascimento}}</td>
+	              <td class="text-left" style="border: 0;"><b>Proveniência:</b> {{vm.historicoEscolar.proveniencia}}</td>
+	          </tr>
+	        </table>
+
+	        <div class="page-header">
+	          <h4><small>Projetos de pesquisas</small></h4>
+	        </div>
+
+	       <div ng-repeat="projeto in vm.historicoEscolar.projetos">
+		       <div class="media">
+		         <div class="media-left">
+		             {{projeto.inicio}} - {{projeto.fim}}
+		         </div>
+		         <div class="media-body">
+		           <p>{{projeto.titulo}}</p>
+
+		           <p><b><i>Descrição: </i></b>
+		            <span>{{projeto.resumo}}</span>
+		           </p>
+
+		           <p><b><i>Integrantes: </i></b>
+		             <span ng-repeat="integrante in projeto.integrantes">{{integrante}}; </span>
+		           </p>
+
+		           <p><b><i>Disciplinas cursadas: </i></b>
+		             <span ng-repeat="disciplina in projeto.disciplinasCursadas">{{disciplina}}; </span>
+		           </p>
+
+		           <p><b><i>Trabalhos publicados: </i></b>
+		             <a href="{{trabalho.urlArquivo}}" target="_blank" ng-repeat="trabalho in projeto.trabalhosPublicados">{{$index+1}}) {{trabalho.titulo}}; </a>
+		           </p>
+
+		         </div>
+		        </div>
+	        </div>
+
+			<div class="page-header">
+	          <h4><small>Imagens</small></h4>
+	        </div>
+
+					<div id="images">
+					</div>
+
+					<nav aria-label="...">
+					  <ul class="pager">
+					    <li><a href="" ng-click="vm.carouselImagens.prev();">Anterior</a></li>
+					    <li><a href="" ng-click="vm.carouselImagens.next();">Próximo</a></li>
+					  </ul>
+					</nav>
+
+					<div class="page-header">
+	          			<h4><small>Vídeos</small></h4>
+	        		</div>
+
+					<div id="videos">
+					</div>
+
+					<nav aria-label="...">
+					  <ul class="pager">
+					    <li><a href="" ng-click="vm.carouselVideos.prev();">Anterior</a></li>
+					    <li><a href="" ng-click="vm.carouselVideos.next();">Próximo</a></li>
+					  </ul>
+					</nav>
+
+	      </div>
+				<!-- End modal-body -->
+				<!-- Sart modal-footer -->
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Fechar</button>
+	      </div>
+				<!-- End modal-footer -->
+	    </div>
+	  </div>
+	</div>
+	<!--  End Modal -->
+	
 		<script src="js/angular.min.js"></script>
-    <script src="js/angular-resource.min.js"></script>
+    	<script src="js/angular-resource.min.js"></script>
 		<script src="js/jquery-1.12.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    	<script src="js/bootstrap.min.js"></script>
 		<script src="js/material.min.js"></script>
 		<script src="js/material-kit.js"></script>
+		<script src="js/carousel.js"></script>
 		<script src="js/site.js"></script>
 
 		<script type="text/javascript">
@@ -312,5 +429,4 @@
 		</script>
 
 	</body>
-
 </html>
