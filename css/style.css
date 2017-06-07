@@ -1,0 +1,23 @@
+.modal-historico-escolar {
+	width: 75%;
+}
+
+.media-left {
+	width: 10%;
+}
+
+.media-body {
+	text-align: justify;
+}
+
+.text-center .img-responsive {
+	max-height: 320px;
+    width: 75%;
+    margin: 0 auto;
+}
+
+.embed-responsive-16by9 {
+    padding-bottom: 40%;
+    width: 75%;
+    margin: 0 auto;
+}
