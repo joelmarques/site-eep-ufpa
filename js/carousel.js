@@ -83,7 +83,7 @@ function addImages(content, containerID) {
   	var main = $("#"+containerID);
 		main.empty();
     for (var i=0; i<content.length; i++) {
-      var carousel = $("<img class='carousel' style='width: 552px; height: 315px;'/>");
+      var carousel = $("<img class='carousel img-responsive'/>");
 			carousel.attr('src', replaceURLImage(content[i]));
       main.append(carousel);
     }
@@ -94,7 +94,7 @@ function addVideos(content, containerID) {
 		var main = $("#"+containerID);
 		main.empty();
 		for (var i=0; i<content.length; i++) {
-			var carousel = $("<iframe class='carousel' width='552' height='315' frameborder='0' allowfullscreen/>");
+			var carousel = $("<iframe class='carousel embed-responsive-item' frameborder='0' allowfullscreen/>");
 			carousel.attr('src', content[i]);
 			main.append(carousel);
 		}

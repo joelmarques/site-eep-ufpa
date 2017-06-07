@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html ng-app="site">
 	<head>
-	  <title>Escola Experimental de Primatas (EEP - UFPA)</title>
-	  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+	  	<title>Escola Experimental de Primatas (EEP - UFPA)</title>
+	  	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link href="img/shortcut.ico" rel="shortcut icon"/>
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css"/>
-	  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css"/>
+	  	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css"/>
 		<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 		<link href="css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
  		<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-    <link href="css/material-kit.css" rel="stylesheet" type="text/css"/>
+    	<link href="css/material-kit.css" rel="stylesheet" type="text/css"/>
+    	<link href="css/style.css" rel="stylesheet" type="text/css"/>
    </head>
 
 	<body class="landing-page" ng-controller="SiteCtrl as vm">
@@ -291,7 +292,7 @@
 
 	<!-- Sart Modal -->
 	<div class="modal fade" id="modalHistoricoEscolar" tabindex="-1" role="dialog" aria-labelledby="modalHistoricoEscolarLabel" aria-hidden="true">
-	  <div class="modal-dialog">
+	  <div class="modal-dialog modal-historico-escolar">
 	    <div class="modal-content">
 				<!-- Sart modal-header -->
 	      <div class="modal-header">
@@ -342,7 +343,7 @@
 	       <div ng-repeat="projeto in vm.historicoEscolar.projetos">
 		       <div class="media">
 		         <div class="media-left">
-		             {{projeto.inicio}} - {{projeto.fim}}
+		         	<span class="media-heading title">{{projeto.inicio}} - {{projeto.fim}}</span>		         
 		         </div>
 		         <div class="media-body">
 		           <p>{{projeto.titulo}}</p>
@@ -370,9 +371,11 @@
 			<div class="page-header">
 	          <h4><small>Imagens</small></h4>
 	        </div>
-
-					<div id="images">
-					</div>
+					
+					<div class="row">
+				        <div id="images" class="col-md-12 text-center">
+				        </div>               
+				    </div>
 
 					<nav aria-label="...">
 					  <ul class="pager">
@@ -384,9 +387,9 @@
 					<div class="page-header">
 	          			<h4><small>Vídeos</small></h4>
 	        		</div>
-
-					<div id="videos">
-					</div>
+	        		
+					<div id="videos" class="embed-responsive embed-responsive-16by9">
+		        	</div>
 
 					<nav aria-label="...">
 					  <ul class="pager">
