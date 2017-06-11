@@ -82,29 +82,42 @@ Carousel.prototype.slide = function (index) {
 function addImages(content, containerID) {
   	var main = $("#"+containerID);
 		main.empty();
-    for (var i=0; i<content.length; i++) {
-      var carousel = $("<img class='carousel img-responsive'/>");
+		main.attr('class', 'col-md-12 text-center');
+		if (content.length > 0) {
+			for (var i=0; i<content.length; i++) {
+			var carousel = $("<img class='carousel img-responsive'/>");
 			carousel.attr('src', replaceURLImage(content[i]));
-      main.append(carousel);
-    }
-		return new Carousel(containerID);
+			main.append(carousel);
+	    }
+			return new Carousel(containerID);
+		} else {
+			var noContent = $("<span class='no-content'>Sem imagens!</span>");
+			main.append(noContent);
+		}
 }
 
 function addVideos(content, containerID) {
 		var main = $("#"+containerID);
 		main.empty();
-		for (var i=0; i<content.length; i++) {
-			var carousel = $("<iframe class='carousel embed-responsive-item' frameborder='0' allowfullscreen/>");
-			carousel.attr('src', content[i]);
-			main.append(carousel);
+		if (content.length > 0) {
+			main.attr('class', 'embed-responsive embed-responsive-16by9');
+			for (var i=0; i<content.length; i++) {
+				var carousel = $("<iframe class='carousel embed-responsive-item' frameborder='0' allowfullscreen/>");
+				carousel.attr('src', content[i]);
+				main.append(carousel);
+			}
+			return new Carousel(containerID);
+		} else {
+			main.attr('class', 'col-md-12 text-center');
+			var noContent = $("<span class='no-content'>Sem vídeos!</span>");
+			main.append(noContent);
 		}
-		return new Carousel(containerID);
 }
 
 function replaceURLImage(url) {
-	if (url.indexOf("https://drive.google.com/file/d/") != -1) {	
-		var codigo = url.replace("https://drive.google.com/file/d/","").replace("/view?usp=sharing","");		
+	if (url.indexOf("https://drive.google.com/file/d/") != -1) {
+		var codigo = url.replace("https://drive.google.com/file/d/","").replace("/view?usp=sharing","");
 		return "https://drive.google.com/uc?export=view&id=" + codigo;
-	}	
+	}
 	return url;
 }

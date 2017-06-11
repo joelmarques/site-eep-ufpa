@@ -343,7 +343,7 @@
 	       <div ng-repeat="projeto in vm.historicoEscolar.projetos">
 		       <div class="media">
 		         <div class="media-left">
-		         	<span class="media-heading title">{{projeto.inicio}} - {{projeto.fim}}</span>		         
+		         	<span class="media-heading title">{{projeto.inicio}} - {{projeto.fim}}</span>
 		         </div>
 		         <div class="media-body">
 		           <p>{{projeto.titulo}}</p>
@@ -371,13 +371,13 @@
 			<div class="page-header">
 	          <h4><small>Imagens</small></h4>
 	        </div>
-					
-					<div class="row">
-				        <div id="images" class="col-md-12 text-center">
-				        </div>               
-				    </div>
 
-					<nav aria-label="...">
+					<div class="row">
+			        <div id="images">
+							</div>
+			    </div>
+
+					<nav aria-label="..." ng-if="vm.historicoEscolar.imagens.length > 0">
 					  <ul class="pager">
 					    <li><a href="" ng-click="vm.carouselImagens.prev();">Anterior</a></li>
 					    <li><a href="" ng-click="vm.carouselImagens.next();">Próximo</a></li>
@@ -387,11 +387,13 @@
 					<div class="page-header">
 	          			<h4><small>Vídeos</small></h4>
 	        		</div>
-	        		
-					<div id="videos" class="embed-responsive embed-responsive-16by9">
-		        	</div>
 
-					<nav aria-label="...">
+					<div class="row">
+						<div id="videos">
+						</div>
+					</div>
+
+					<nav aria-label="..." ng-if="vm.historicoEscolar.videos.length > 0">
 					  <ul class="pager">
 					    <li><a href="" ng-click="vm.carouselVideos.prev();">Anterior</a></li>
 					    <li><a href="" ng-click="vm.carouselVideos.next();">Próximo</a></li>
@@ -402,14 +404,14 @@
 				<!-- End modal-body -->
 				<!-- Sart modal-footer -->
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Fechar</button>
+	        <button type="button" class="btn btn-danger btn-simple" data-dismiss="modal"><span class="btn-close">Fechar</span></button>
 	      </div>
 				<!-- End modal-footer -->
 	    </div>
 	  </div>
 	</div>
 	<!--  End Modal -->
-	
+
 		<script src="js/angular.min.js"></script>
     	<script src="js/angular-resource.min.js"></script>
 		<script src="js/jquery-1.12.1.min.js"></script>

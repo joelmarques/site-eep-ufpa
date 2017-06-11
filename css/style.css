@@ -11,13 +11,23 @@
 }
 
 .text-center .img-responsive {
-	max-height: 320px;
-    width: 75%;
-    margin: 0 auto;
+  width: 78%;
+  margin: 0 auto;
 }
 
 .embed-responsive-16by9 {
     padding-bottom: 40%;
     width: 75%;
     margin: 0 auto;
+}
+
+.no-content {
+    font-weight: 500;
+	font-family: sans-serif;
+    font-size: 18px;
+    color: #cc870c;
+}
+
+.btn-close {
+	color: #cc870c;
 }
