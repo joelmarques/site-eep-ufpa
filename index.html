@@ -340,6 +340,10 @@
 	          <h4><small>Projetos de pesquisas</small></h4>
 	        </div>
 
+					<div class="text-center" ng-if="vm.historicoEscolar.projetos.length == 0">
+						<span class="no-content">Sem projetos!</span>
+					</div>
+
 	       <div ng-repeat="projeto in vm.historicoEscolar.projetos">
 		       <div class="media">
 		         <div class="media-left">
