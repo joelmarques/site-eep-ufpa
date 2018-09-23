@@ -8,7 +8,7 @@ angular.module('site', [])
 
 	vm.historicoEscolar = {};
 
-	vm.sistema = variaveisGlobais.ambiente + 'app.html';
+	vm.sistema = variaveisGlobais.ambiente;
 
 	vm.visitante = {};
 
